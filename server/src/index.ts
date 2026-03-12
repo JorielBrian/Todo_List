@@ -10,7 +10,7 @@ const app = express()
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Built-in middleware to parse JSON bodies; it can be used res.json() to send JSON responses as well
 app.use(logger);
 
 // Routes
@@ -19,7 +19,7 @@ app.use('/api/todos', todoRoutes)
 // Get all todos
 app.get("/", (req, res) => {
   res.statusCode = 200;
-  res.json({ message: "API running" })
+  res.json({ message: "API running" }) //res.send("API running") this is the old way, but res.json is better for APIs as it sets the content-type to application/json
 });
 
 // Create a new todo
